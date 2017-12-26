@@ -91,6 +91,11 @@
         return (/Date/).test(Object.prototype.toString.call(obj)) && !isNaN(obj.getTime());
     },
 
+    checkIfToday = function(date) {
+        var now = moment();
+        return now.date() === date.getDate() && now.month() === date.getMonth() && now.year() === date.getFullYear();
+    },
+
     isWeekend = function(date)
     {
         var day = date.getDay();
@@ -1106,7 +1111,7 @@
             {
                 var day = new Date(year, month, 1 + (i - before)),
                     isSelected = isDate(this._d) ? compareDates(day, this._d) : false,
-                    isToday = compareDates(day, now),
+                    isToday =  checkIfToday(day),
                     hasEvent = opts.events.indexOf(day.toDateString()) !== -1 ? true : false,
                     isEmpty = i < before || i >= (days + before),
                     dayNumber = 1 + (i - before),
