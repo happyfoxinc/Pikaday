@@ -91,8 +91,19 @@
         return (/Date/).test(Object.prototype.toString.call(obj)) && !isNaN(obj.getTime());
     },
 
+    getCurrentDate = function() {
+        var timeDeviation = localStorage.getItem('hf-staff-time-deviation');
+        var now = new Date();
+        if (timeDeviation) {
+            timeDeviation = Number(timeDeviation);
+            now = new Date(now - timeDeviation);
+        }
+        return now;
+    },
+
     checkIfToday = function(date) {
-        var now = moment();
+        var now = getCurrentDate();
+        now = moment(now);
         return now.date() === date.getDate() && now.month() === date.getMonth() && now.year() === date.getFullYear();
     },
 
@@ -654,7 +665,7 @@
                 self.gotoDate(defDate);
             }
         } else {
-            self.gotoDate(new Date());
+            self.gotoDate(getCurrentDate());
         }
 
         if (opts.bound) {
@@ -720,7 +731,7 @@
             }
 
             if (isArray(opts.yearRange)) {
-                var fallback = new Date().getFullYear() - 10;
+                var fallback = getCurrentDate().getFullYear() - 10;
                 opts.yearRange[0] = parseInt(opts.yearRange[0], 10) || fallback;
                 opts.yearRange[1] = parseInt(opts.yearRange[1], 10) || fallback;
             } else {
@@ -857,7 +868,7 @@
 
         adjustDate: function(sign, days) {
 
-            var day = this.getDate() || new Date();
+            var day = this.getDate() || getCurrentDate();
             var difference = parseInt(days)*24*60*60*1000;
 
             var newDay;
@@ -884,7 +895,7 @@
 
         gotoToday: function()
         {
-            this.gotoDate(new Date());
+            this.gotoDate(getCurrentDate());
         },
 
         /**
@@ -1083,7 +1094,7 @@
         render: function(year, month, randId)
         {
             var opts   = this._o,
-                now    = new Date(),
+                now    = getCurrentDate(),
                 days   = getDaysInMonth(year, month),
                 before = new Date(year, month, 1).getDay(),
                 data   = [],
