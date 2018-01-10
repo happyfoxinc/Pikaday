@@ -92,7 +92,13 @@
     },
 
     checkIfToday = function(date) {
-        var now = moment();
+        var timeDeviation = localStorage.getItem('hf-staff-time-deviation');
+        var now = new Date();
+        if (timeDeviation) {
+            timeDeviation = Number(timeDeviation);
+            now = now - timeDeviation;
+        }
+        now = moment(now);
         return now.date() === date.getDate() && now.month() === date.getMonth() && now.year() === date.getFullYear();
     },
 
