@@ -103,7 +103,7 @@
 
     checkIfToday = function(date) {
         var now = getCurrentDate();
-        now = moment(now);
+        now = window.moment(now);
         return now.date() === date.getDate() && now.month() === date.getMonth() && now.year() === date.getFullYear();
     },
 
