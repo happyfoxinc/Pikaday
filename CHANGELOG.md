@@ -1,6 +1,14 @@
 # Changelog
 
-## 1.7.0 - TBA
+## 1.8.0 - 2018-10-17
+
+- Remove testling because service is not running atm
+- Move to github organisation Pikaday/Pikaday
+- Add CSS-classes indicating position
+- Remove the Moment.js optional dependency
+- Add aria label text configuration
+
+## 1.7.0 - 2017-12-12
 
 - Add keyboard input option, see #610
 
@@ -36,7 +44,7 @@
 - Fix touch device support, see #374
 - Add possibility to reset the max and min date to the date picker
 
-## 1.3.3 - 2015-02-17
+## 1.3.3 - 2015-06-26
 
 - Add theme class support, see #260
 - Fix on iOS, see #101, #121
