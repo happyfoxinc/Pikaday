@@ -275,7 +275,7 @@
             months        : ['January','February','March','April','May','June','July','August','September','October','November','December'],
             weekdays      : ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
             weekdaysShort : ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],
-            clear         : 'Clear'
+            clearDate     : 'Clear Date'
         },
 
         // Theme Classname
@@ -414,7 +414,7 @@
     renderFooter = function(opts)
     {
         var i, arr = [];
-        arr.push('<td colspan="'+(opts.showWeekNumber?'8':'7')+'"><button class="pika-clear">'+opts.i18n.clear+'</button></td>');
+        arr.push('<td colspan="'+(opts.showWeekNumber?'8':'7')+'"><button class="pika-clear">'+opts.i18n.clearDate+'</button></td>');
         return '<tfoot>' + (opts.isRTL ? arr.reverse() : arr).join('') + '</tfoot>';
     },
 
