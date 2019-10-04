@@ -212,6 +212,9 @@
         // first day of week (0: Sunday, 1: Monday etc)
         firstDay: 0,
 
+        // render clear button
+        clearButton: false,
+
         // the default flag for moment's strict date parsing
         formatStrict: false,
 
@@ -271,7 +274,8 @@
             nextMonth     : 'Next Month',
             months        : ['January','February','March','April','May','June','July','August','September','October','November','December'],
             weekdays      : ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
-            weekdaysShort : ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
+            weekdaysShort : ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],
+            clear         : 'Clear'
         },
 
         // Theme Classname
@@ -407,6 +411,13 @@
         return '<thead><tr>' + (opts.isRTL ? arr.reverse() : arr).join('') + '</tr></thead>';
     },
 
+    renderFooter = function(opts)
+    {
+        var i, arr = [];
+        arr.push('<td colspan="'+(opts.showWeekNumber?'8':'7')+'"><button class="pika-clear">'+opts.i18n.clear+'</button></td>');
+        return '<tfoot>' + (opts.isRTL ? arr.reverse() : arr).join('') + '</tfoot>';
+    },
+
     renderTitle = function(instance, c, year, month, refYear, randId)
     {
         var i, j, arr,
@@ -469,7 +480,7 @@
 
     renderTable = function(opts, data, randId)
     {
-        return '<table cellpadding="0" cellspacing="0" class="pika-table" role="grid" aria-labelledby="' + randId + '">' + renderHead(opts) + renderBody(data) + '</table>';
+        return '<table cellpadding="0" cellspacing="0" class="pika-table" role="grid" aria-labelledby="' + randId + '">' + renderHead(opts) + renderBody(data) + (opts.clearButton ? renderFooter(opts) :'') +  '</table>';
     },
 
 
@@ -510,6 +521,10 @@
                 else if (hasClass(target, 'pika-next')) {
                     self.nextMonth();
                 }
+                else if (hasClass(target, 'pika-clear')) {
+                    self.setDate(null);
+                }
+            
             }
             if (!hasClass(target, 'pika-select')) {
                 // if this is touch event prevent mouse events emulation

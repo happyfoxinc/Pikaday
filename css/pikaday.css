@@ -228,3 +228,19 @@ http://nicolasgallagher.com/micro-clearfix-hack/
     border-bottom: none;
     cursor: help;
 }
+
+.pika-clear {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    display: block;
+    width: 100%;
+    margin: 5px auto 0;
+    outline: none;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    text-align: center;
+    color: #0088CC;
+    font-size: 14px;
+    line-height: 18px;
+}
