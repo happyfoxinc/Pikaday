@@ -178,6 +178,7 @@ Pikaday has many useful options:
 * `onClose` callback function for when the picker is hidden
 * `onDraw` callback function for when the picker draws a new month
 * `keyboardInput` enable keyboard input support (default `true`)
+* `clearButton` show a 'Clear Date button' underneath calendar that clears the date (default `false`) 
 
 ### Styling
 
